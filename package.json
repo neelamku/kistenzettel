@@ -1,0 +1,19 @@
+{
+  "name": "kistenzettel",
+  "version": "2.0.0",
+  "description": "QR-Etiketten für Umzugskisten: erstellen, drucken, aufkleben, per Scan die Packliste abrufen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^11.0.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

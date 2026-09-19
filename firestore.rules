@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// In der Firebase-Konsole einfügen unter: Firestore Database -> Regeln.
+//
+// - Jeder darf eine einzelne Kiste per direktem Link lesen ("get") -- so
+//   funktioniert das Scannen ohne Anmeldung.
+// - Niemand darf die gesamte Sammlung auflisten oder durchsuchen ("list"),
+//   außer der Besitzerin -- fremde können also nicht dein ganzes Inventar
+//   durchstöbern, nur die eine Kiste, deren Code sie gescannt haben.
+// - Nur die Besitzerin (per E-Mail) darf Kisten anlegen, ändern oder löschen.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function istBesitzerin() {
+      return request.auth != null
+        && request.auth.token.email == 'neelamkumariyadav95@gmail.com';
+    }
+
+    match /boxes/{boxId} {
+      allow get: if true;
+      allow list: if istBesitzerin();
+      allow create, update, delete: if istBesitzerin();
+    }
+  }
+}
