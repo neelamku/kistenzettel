@@ -6,12 +6,12 @@ import { getFirestore } from 'firebase/firestore';
 // Diese Werte sind öffentlich sichtbar (stehen im Quelltext der Seite) -- das ist normal
 // und kein Sicherheitsrisiko. Der eigentliche Schutz kommt aus firestore.rules.
 export const firebaseConfig = {
-  apiKey: 'DEIN_API_KEY',
-  authDomain: 'DEIN_PROJEKT.firebaseapp.com',
-  projectId: 'DEIN_PROJEKT',
-  storageBucket: 'DEIN_PROJEKT.appspot.com',
-  messagingSenderId: 'DEINE_SENDER_ID',
-  appId: 'DEINE_APP_ID',
+  apiKey: 'AIzaSyC_xozYOAmkXIRh9I9_xzACMPc2upnu0IQ',
+  authDomain: 'kistenzettel.firebaseapp.com',
+  projectId: 'kistenzettel',
+  storageBucket: 'kistenzettel.firebasestorage.app',
+  messagingSenderId: '1052388901582',
+  appId: '1:1052388901582:web:12f450f0efe3222172c69f',
 };
 
 // Die einzige E-Mail-Adresse, die neue Etiketten erstellen und Listen bearbeiten darf.
