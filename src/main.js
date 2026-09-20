@@ -120,9 +120,12 @@ function labelTicketHtml(box, imgId) {
 }
 
 async function printBoxes(boxes) {
-  const html = `<div class="label-grid">${boxes.map((b, i) => labelTicketHtml(b, 'print-qr-' + i)).join('')}</div>`;
+  // Jedes Etikett zweimal hintereinander, damit man je eine Kopie auf
+  // zwei gegenüberliegende Seiten der Kiste kleben kann.
+  const copies = boxes.flatMap((b) => [b, b]);
+  const html = `<div class="label-grid">${copies.map((b, i) => labelTicketHtml(b, 'print-qr-' + i)).join('')}</div>`;
   printRoot.innerHTML = html;
-  await Promise.all(boxes.map(async (b, i) => {
+  await Promise.all(copies.map(async (b, i) => {
     $('print-qr-' + i).src = await qrImgSrc(boxLink(b.code));
   }));
   requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
